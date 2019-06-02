@@ -42,3 +42,18 @@ export function sendResetPasswordEmail(user) {
 
   tranport.sendMail(email);
 }
+
+export function sendConfirmationResetPasswordEmail(user) {
+  const tranport = setup();
+  const email = {
+    from,
+    to: user.email,
+    subject: "Reset Password Confirm",
+    text: `
+    Your password was resetted, if is not your action please change your password follow this link
+    ${user.generateResetPasswordLink()}
+    `
+  };
+
+  tranport.sendMail(email);
+}
