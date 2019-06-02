@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
-// import jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 // import uniqueValidator from "mongoose-unique-validator";
 
 // TODO: add uniqueness and email validations to email field
@@ -24,6 +24,24 @@ schema.methods.isValidPassword = function isValidPassword(password) {
   return bcrypt.compareSync(password, this.passwordHash);
 };
 
+schema.methods.generateJWT = function generateJWT() {
+  return jwt.sign(
+    {
+      email: this.email,
+      // confirmed: this.confirmed
+    },
+    process.env.JWT_SECRET
+  );
+};
+
+schema.methods.toAuthJSON = function toAuthJSON() {
+  return {
+    email: this.email,
+    // confirmed: this.confirmed,
+    token: this.generateJWT()
+  };
+};
+
 // schema.methods.setPassword = function setPassword(password) {
 //   this.passwordHash = bcrypt.hashSync(password, 10);
 // };
@@ -41,15 +59,7 @@ schema.methods.isValidPassword = function isValidPassword(password) {
 //     .HOST}/reset_password/${this.generateResetPasswordToken()}`;
 // };
 
-// schema.methods.generateJWT = function generateJWT() {
-//   return jwt.sign(
-//     {
-//       email: this.email,
-//       confirmed: this.confirmed
-//     },
-//     process.env.JWT_SECRET
-//   );
-// };
+
 
 // schema.methods.generateResetPasswordToken = function generateResetPasswordToken() {
 //   return jwt.sign(
@@ -61,13 +71,7 @@ schema.methods.isValidPassword = function isValidPassword(password) {
 //   );
 // };
 
-// schema.methods.toAuthJSON = function toAuthJSON() {
-//   return {
-//     email: this.email,
-//     confirmed: this.confirmed,
-//     token: this.generateJWT()
-//   };
-// };
+
 
 // schema.plugin(uniqueValidator, { message: "This email is already taken" });
 
