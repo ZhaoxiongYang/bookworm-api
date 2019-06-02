@@ -29,18 +29,18 @@ router.post("/confirmation", (req, res) => {
   );
 });
 
-// router.post("/reset_password_request", (req, res) => {
-//   User.findOne({ email: req.body.email }).then(user => {
-//     if (user) {
-//       sendResetPasswordEmail(user);
-//       res.json({});
-//     } else {
-//       res
-//         .status(400)
-//         .json({ errors: { global: "There is no user with such email" } });
-//     }
-//   });
-// });
+router.post("/reset_password_request", (req, res) => {
+  User.findOne({ email: req.body.email }).then(user => {
+    if (user) {
+      // sendResetPasswordEmail(user);
+      res.json({});
+    } else {
+      res
+        .status(400)
+        .json({ errors: { global: "There is no user with such email" } });
+    }
+  });
+});
 
 // router.post("/validate_token", (req, res) => {
 //   jwt.verify(req.body.token, process.env.JWT_SECRET, err => {
