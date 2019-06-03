@@ -21,6 +21,9 @@
     "mongoose": "^5.5.12",
     "mongoose-unique-validator": "^2.0.3",
     "nodemailer": "^6.2.1",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
+    "xml2js": "^0.4.19"
   }
 }
