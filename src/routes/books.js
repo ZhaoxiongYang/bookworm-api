@@ -23,13 +23,13 @@ router.get("/search", (req, res) => {
       goodreadsId: 1,
       title: "1984",
       authors: "orwell",
-      covers:["http://images.gr-asserts.com/books/13489905661/5470.jpg",
-              "http://images.gr-asserts.com/books/15046119571/9577857.jpg"],
+      covers:["https://embed.cdn.pais.scholastic.com/v1/systems/kids/products/identifiers/isbn/9781338174526/cover/renditions/900",
+              "https://images.gr-assets.com/books/1433161048l/1137215.jpg"],
       pages: 198
     },{
       goodreadsId: 2,
-      title: "1984",
-      authors: "orwell",
+      title: "three codes",
+      authors: "alex",
       covers:["http://images.gr-asserts.com/books/13489905661/5470.jpg",
               "http://images.gr-asserts.com/books/15046119571/9577857.jpg"],
       pages: 565
